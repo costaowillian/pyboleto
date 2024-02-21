@@ -227,29 +227,29 @@ class BoletoPDF(object):
         )
 
         # Campos da direita
-        y += self.height_line
-        self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
-        self.pdf_canvas.drawString(
-            self.width - (45 * mm) + self.space,
-            y + self.delta_title,
-            '(+) Outros acréscimos'
-        )
+        # y += self.height_line
+        # self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
+        # self.pdf_canvas.drawString(
+        #     self.width - (45 * mm) + self.space,
+        #     y + self.delta_title,
+        #     '(+) Outros acréscimos'
+        # )
 
-        y += self.height_line
-        self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
-        self.pdf_canvas.drawString(
-            self.width - (45 * mm) + self.space,
-            y + self.delta_title,
-            '(+) Mora/Multa'
-        )
+        # y += self.height_line
+        # self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
+        # self.pdf_canvas.drawString(
+        #     self.width - (45 * mm) + self.space,
+        #     y + self.delta_title,
+        #     '(+) Mora/Multa'
+        # )
 
-        y += self.height_line
-        self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
-        self.pdf_canvas.drawString(
-            self.width - (45 * mm) + self.space,
-            y + self.delta_title,
-            '(-) Outras deduções'
-        )
+        # y += self.height_line
+        # self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
+        # self.pdf_canvas.drawString(
+        #     self.width - (45 * mm) + self.space,
+        #     y + self.delta_title,
+        #     '(-) Outras deduções'
+        # )
 
         y += self.height_line
         self.__horizontalLine(self.width - (45 * mm), y, 45 * mm)
