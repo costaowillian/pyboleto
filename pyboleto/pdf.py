@@ -201,7 +201,7 @@ class BoletoPDF(object):
         self.pdf_canvas.drawString(0, y + self.space, 'Sacador / Avalista')
 
         y += self.height_line
-        self.pdf_canvas.drawString(0, y + self.delta_title, 'Sacado')
+        self.pdf_canvas.drawString(0, y + self.delta_title, 'Nome do pagador')
         sacado = boleto_dados.sacado
 
         # Linha grossa dividindo o Sacado
@@ -463,6 +463,22 @@ class BoletoPDF(object):
             y + self.space,
             boleto_dados.data_vencimento.strftime('%d/%m/%Y')
         )
+        self.pdf_canvas.setFont('Helvetica', self.font_size_title)
+
+        # Linha horizontal com informações sobre o boleto de proposta
+        y += self.height_line
+        self.__horizontalLine(0, y, self.width)
+        self.pdf_canvas.setFont('Helvetica', self.font_size_value)
+        proposta_texto = [
+            'BOLETO DE PROPOSTA',
+            'ESTE BOLETO SE REFERE A UMA PROPOSTA JÁ FEITA A VOCÊ E O SEU PAGAMENTO NÃO É OBRIGATÓRIO.', 
+            'Deixar de pagá-lo não dará causa a proposta, a cobrança judicial ou extrajudicial, nem inserção de seu nome em cadastro de restrição',
+            'ao crédito. Pagar até o vencimento significa aceitar a proposta. Informações adicionais sobre a proposta e sobre o respectivo contrato', 'poderão ser solicitadas a qualquer momento ao beneficiário, por meio de seus canais de atendimento.'
+        ]
+        y += len(proposta_texto) * 8.5
+        for i, linha in enumerate(proposta_texto):
+            self.pdf_canvas.drawString(0, y + self.space - (i * self.delta_font), linha)
+        
         self.pdf_canvas.setFont('Helvetica', self.font_size_title)
 
         # Linha grossa com primeiro campo logo tipo do banco
@@ -563,7 +579,7 @@ class BoletoPDF(object):
         self.pdf_canvas.drawString(0, y + self.space, 'Sacador / Avalista')
 
         y += self.height_line
-        self.pdf_canvas.drawString(0, y + self.delta_title, 'Sacado')
+        self.pdf_canvas.drawString(0, y + self.delta_title, 'Nome pagador')
         sacado = boleto_dados.sacado
 
         # Linha grossa dividindo o Sacado
@@ -826,6 +842,23 @@ class BoletoPDF(object):
             boleto_dados.data_vencimento.strftime('%d/%m/%Y')
         )
         self.pdf_canvas.setFont('Helvetica', self.font_size_title)
+
+        # Linha horizontal com informações sobre o boleto de proposta
+        y += self.height_line
+        self.__horizontalLine(0, y, self.width)
+        self.pdf_canvas.setFont('Helvetica', self.font_size_value)
+        proposta_texto = [
+            'BOLETO DE PROPOSTA',
+            'ESTE BOLETO SE REFERE A UMA PROPOSTA JÁ FEITA A VOCÊ E O SEU PAGAMENTO NÃO É OBRIGATÓRIO.', 
+            'Deixar de pagá-lo não dará causa a proposta, a cobrança judicial ou extrajudicial, nem inserção de seu nome em cadastro de restrição',
+            'ao crédito. Pagar até o vencimento significa aceitar a proposta. Informações adicionais sobre a proposta e sobre o respectivo contrato', 'poderão ser solicitadas a qualquer momento ao beneficiário, por meio de seus canais de atendimento.'
+        ]
+        y += len(proposta_texto) * 8.5 
+        for i, linha in enumerate(proposta_texto):
+            self.pdf_canvas.drawString(0, y + self.space - (i * self.delta_font), linha)
+        
+        self.pdf_canvas.setFont('Helvetica', self.font_size_title)
+
 
         # Linha grossa com primeiro campo logo tipo do banco
         self.pdf_canvas.setLineWidth(3)
