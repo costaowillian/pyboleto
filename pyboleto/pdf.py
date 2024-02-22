@@ -211,7 +211,7 @@ class BoletoPDF(object):
         self.pdf_canvas.setFont('Helvetica', self.font_size_value)
         for i in range(len(sacado)):
             self.pdf_canvas.drawString(
-                15 * mm,
+                20 * mm,
                 (y - 10) - (i * self.delta_font),
                 sacado[i]
             )
@@ -219,7 +219,7 @@ class BoletoPDF(object):
 
         # Linha vertical limitando todos os campos da direita
         self.pdf_canvas.setLineWidth(1)
-        self.__verticalLine(self.width - (45 * mm), y, 9 * self.height_line)
+        self.__verticalLine(self.width - (45 * mm), y, 6 * self.height_line)
         self.pdf_canvas.drawString(
             self.width - (45 * mm) + self.space,
             y + self.delta_title,
@@ -470,12 +470,13 @@ class BoletoPDF(object):
         self.__horizontalLine(0, y, self.width)
         self.pdf_canvas.setFont('Helvetica', self.font_size_value)
         proposta_texto = [
-            'BOLETO DE PROPOSTA',
+           'BOLETO DE PROPOSTA',
             'ESTE BOLETO SE REFERE A UMA PROPOSTA JÁ FEITA A VOCÊ E O SEU PAGAMENTO NÃO É OBRIGATÓRIO.', 
             'Deixar de pagá-lo não dará causa a proposta, a cobrança judicial ou extrajudicial, nem inserção de seu nome em cadastro de restrição',
-            'ao crédito. Pagar até o vencimento significa aceitar a proposta. Informações adicionais sobre a proposta e sobre o respectivo contrato', 'poderão ser solicitadas a qualquer momento ao beneficiário, por meio de seus canais de atendimento.'
+            'ao crédito.',  'Pagar até o vencimento significa aceitar a proposta.', 'Informações adicionais sobre a proposta e sobre o respectivo contrato poderão ser solicitadas a qualquer momento ao', 'beneficiário, por meio de seus canais de atendimento.'
         ]
-        y += len(proposta_texto) * 8.5
+        y += len(proposta_texto) * 8.5 
+
         for i, linha in enumerate(proposta_texto):
             self.pdf_canvas.drawString(0, y + self.space - (i * self.delta_font), linha)
         
@@ -486,7 +487,7 @@ class BoletoPDF(object):
         y += self.height_line
         self.__horizontalLine(0, y, self.width)
         self.pdf_canvas.setLineWidth(2)
-        self.__verticalLine(40 * mm, y, self.height_line)  # Logo Tipo
+        self.__verticalLine(30 * mm, y, self.height_line)  # Logo Tipo
         self.__verticalLine(60 * mm, y, self.height_line)  # Numero do Banco
 
         if boleto_dados.logo_image:
@@ -589,7 +590,7 @@ class BoletoPDF(object):
         self.pdf_canvas.setFont('Helvetica', self.font_size_value)
         for i in range(len(sacado)):
             self.pdf_canvas.drawString(
-                15 * mm,
+                17 * mm,
                 (y - 10) - (i * self.delta_font),
                 sacado[i]
             )
@@ -851,7 +852,7 @@ class BoletoPDF(object):
             'BOLETO DE PROPOSTA',
             'ESTE BOLETO SE REFERE A UMA PROPOSTA JÁ FEITA A VOCÊ E O SEU PAGAMENTO NÃO É OBRIGATÓRIO.', 
             'Deixar de pagá-lo não dará causa a proposta, a cobrança judicial ou extrajudicial, nem inserção de seu nome em cadastro de restrição',
-            'ao crédito. Pagar até o vencimento significa aceitar a proposta. Informações adicionais sobre a proposta e sobre o respectivo contrato', 'poderão ser solicitadas a qualquer momento ao beneficiário, por meio de seus canais de atendimento.'
+            'ao crédito.',  'Pagar até o vencimento significa aceitar a proposta.', 'Informações adicionais sobre a proposta e sobre o respectivo contrato poderão ser solicitadas a qualquer momento ao', 'beneficiário, por meio de seus canais de atendimento.'
         ]
         y += len(proposta_texto) * 8.5 
         for i, linha in enumerate(proposta_texto):
